@@ -48,9 +48,27 @@ Basic Reset
 }
 
 body {
-  /* font-family: Arial, sans-serif; */
   background-color: #f8f8f8;
   color: #222;
+}
+
+.noScroll{
+    overflow: hidden;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.display{
+    display: block;
 }
 
 /* 
@@ -96,18 +114,24 @@ header .logo a img{
     display: none;
 }
 .small-screen{
+    display: flex;
     padding: 4em 0 0 0;
     background-color: var(--clr-primary);
-    display: none;
     flex-direction: column;
     align-items: center;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 1000;
     height: 100vh;
     width: 70vw;
     border-right: 6px double var(--clr-secondary);
+    transform: translateX(-100%);
+    transition: var(--transition);
+}
+
+.visible{
+    transform: translateX(0);
 }
 
 .close-btn-container{
