@@ -1,0 +1,514 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* 
+===================
+Global Variables
+===================
+*/
+
+:root {
+/* 
+===================
+Color Pallette 
+===================
+*/
+
+/* Primary Color */
+--clr-primary: #004225;
+/* Secondary Color */
+--clr-secondary: #d4af37;
+/* Brand-gradient */
+--gradient-var1: linear-gradient(180deg, #FFFFFF, #DADADA);
+--gradient-var2: linear-gradient(180deg, #FFFFFF, #E0E0E0);
+--gradient-var3: radial-gradient(circle, rgba(220,220,220,1) 25%, rgba(243,243,243,1) 75%);
+--gradient-var4: linear-gradient(180deg, #E8E8E8, #FFFFFF);
+--gradient-var5: linear-gradient(180deg, #FFFFFF, #A7A7A7);
+/* Black Color shades*/
+--clr-black: #2E2F36;
+--shade1: #F0F0F0;
+--shade2: #E8E8E8;
+--shade3: #F8F8F8;
+/*Fonts */
+--ff-primary: "Poppins", sans-serif;
+--ff-secondary: "Lato", sans-serif;
+/* font size */
+font-size: 16px;
+/* Global Transition */
+--transition: all 0.3s ease;
+}
+
+/* 
+===================
+Basic Reset
+===================
+*/
+*, ::after, ::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+  /* font-family: Arial, sans-serif; */
+  background-color: #f8f8f8;
+  color: #222;
+}
+
+/* 
+===========================
+HERO SECTION
+===========================
+*/
+header {
+  background-color: var(--clr-primary); /* NED green */
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+    width: 15vw;
+    min-width: 80px;
+    overflow: hidden;
+}
+
+header .logo a img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.big-screen a {
+    font-size: clamp(12px, 0.1rem + 2vw, 21px);
+    margin-left: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Side Menu */
+.open-menu{
+    color: #fff;
+    border-style: none;
+    background: none;
+    font-size: clamp(18px, 0.1rem + 2vw, 21px);
+    display: none;
+}
+.small-screen{
+    padding: 4em 0 0 0;
+    background-color: var(--clr-primary);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 100vh;
+    width: 70vw;
+    border-right: 6px double var(--clr-secondary);
+}
+
+.close-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2em 0 0;
+    margin-bottom: 2em;
+}
+.close-btn-container button{
+    color: var(--clr-secondary);
+    font-size: clamp(24px, 0.1rem + 2vw, 32px);
+    border-style: none;
+    background: none;
+}
+
+.small-screen a{
+    font-family: var(--ff-secondary);
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(16px, 0.1rem + 2vw, 21px);
+    margin-bottom: 2em;
+}
+
+.logo-side-bar{
+    width: 15vw;
+    min-width: 80px;
+    overflow: hidden;
+    margin-top: 3em;
+}
+.logo-side-bar-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.contact{
+    font-size: clamp(18px, 0.1rem + 2vw, 21px);
+    color: #fff;
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+    .big-screen{
+        display: none;
+    }
+    header .logo {
+        margin: auto;
+    }
+    /* .small-screen{
+        display: flex;
+    } */
+    .open-menu{
+        display: inline-block;
+    }
+    .contact{
+        display: inline-block;
+    }
+}
+
+/* 
+========================
+HERO SECTION
+========================
+ */
+.hero {
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+.hero::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('images/image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;    
+    z-index: 1;
+    filter: blur(4px);
+}
+
+.hero h1 {
+    font-family: var(--ff-primary);
+    font-weight: bold;
+    color: var(--clr-primary);
+    font-size: clamp(25px, 0.1rem + 3vw, 50px);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 span{
+    text-decoration: underline var(--clr-secondary);
+}
+
+.hero p{
+    font-family: var(--ff-secondary);
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+    font-size: clamp(16px, 0.1rem + 2vw, 21px);
+}
+
+/* 
+==============================
+PROJECTS SECTION
+==============================
+ */
+
+.projects {
+  padding: 3rem 2rem;
+  background-color: #fff;
+}
+
+.projects h2 {
+    font-family: var(--ff-primary);
+    font-weight: bold;
+    font-size: clamp(22px, 0.1rem + 3vw, 30px);
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--clr-primary);
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.gallery div {
+    width: 30vw;
+    aspect-ratio: 1;
+    background: #ccc;
+    overflow: hidden;
+}
+
+.gallery div img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 675px) {
+    .gallery{
+        flex-direction: column;
+        align-items: center;
+    }
+    .gallery div{
+        width: 80%;
+        min-width: 250px;
+    }
+    
+}
+
+/* 
+===================================
+SERVICES SECTION
+===================================
+ */
+.services {
+  padding: 3rem 2rem;
+  background-color: #f0f0f0;
+}
+
+.services h2 {
+    font-family: var(--ff-primary);
+    font-weight: bold;
+    font-size: clamp(22px, 0.1rem + 3vw, 30px);
+    text-align: center;
+    color: var(--clr-primary);
+    margin-bottom: 1rem;
+}
+
+.services ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.services li {
+    font-family: var(--ff-secondary);
+    font-weight: 400;
+    font-size: clamp(14px, 0.1rem + 3vw, 21px);
+    background: #fff;
+    border-left: 5px solid #d4af37;
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 200px;
+}
+
+/* 
+=========================
+Testimonial Section
+=========================
+*/
+.testimonials {
+  background-color: #f8f8f8;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.testimonials h2 {
+    font-family: var(--ff-primary);
+    font-weight: bold;
+    font-size: clamp(22px, 0.1rem + 3vw, 30px);
+    color: #004225;
+    margin-bottom: 2rem;
+}
+
+.testimonial-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.testimonial {
+  background-color: #ffffff;
+  border-left: 5px solid #d4af37;
+  padding: 1.5rem;
+  max-width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  font-family: var(--ff-secondary)
+}
+
+.testimonial p {
+    font-weight: 400;
+    font-size: clamp(14px, 0.1rem + 3vw, 18px);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.testimonial h4 {
+    font-family: var(--ff-primary);
+    font-size: clamp(16px, 0.1rem + 3vw, 18px);
+    color: #004225;
+    font-weight: bold;
+}
+
+/*
+============================
+About Section 
+============================
+*/
+.about-snippet {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #004225;
+}
+
+.about-snippet h2 {
+    font-family: var(--ff-primary);
+    font-weight: bold;
+    font-size: clamp(22px, 0.1rem + 3vw, 30px);
+    margin-bottom: 1rem;
+}
+
+.about-snippet p {
+    font-family: var(--ff-secondary);
+    font-weight: 400;
+    font-size: clamp(14px, 0.1rem + 3vw, 20px);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.about-link {
+    text-decoration: none;
+    color: #d4af37;
+    font-family: var(--ff-secondary);
+    font-weight: 400;
+    font-size: clamp(14px, 0.1rem + 3vw, 20px);
+    transition: color 0.2s;
+}
+
+.about-link:hover {
+  color: #004225;
+}
+
+/* 
+=====================
+CTA SECTION
+=====================
+*/
+.cta {
+  background-color: #004225;
+  color: #ffffff;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.cta-content h2 {
+    font-family: var(--ff-primary);
+    font-weight: bold;
+    font-size: clamp(22px, 0.1rem + 3vw, 30px);
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    font-family: var(--ff-secondary);
+    font-weight: 400;
+    font-size: clamp(14px, 0.1rem + 3vw, 20px);
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    font-family: var(--ff-secondary);
+    font-weight: 400;
+    font-size: clamp(14px, 0.1rem + 3vw, 20px);
+    background-color: #d4af37;
+    color: #004225;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.cta-button:hover {
+  background-color: #b8942e;
+}
+
+
+/* 
+===================================
+FOOTER SECTION
+===================================
+ */
+.ned-footer {
+  background-color: var(--clr-primary);
+  color: #ffffff;
+  padding: 2rem 1rem;
+  font-size: 14px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left {
+    width: 15vw;
+    min-width: 80px;
+    overflow: hidden;
+}
+
+.footer-left div img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.footer-links{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 2em;
+}
+
+.footer-socials{
+    display: flex;
+    gap: 2vw;
+    padding-top: 2em;
+}
+.footer-socials a{
+    font-size: clamp(14px, 0.1rem + 3vw, 24px);
+    color: #fff;
+}
+
+.footer-links a{
+    font-family: var(--ff-secondary);
+    font-weight: 400;
+    font-size: clamp(10px, 0.1rem + 3vw, 24px);
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s;
+    margin-bottom: 1em;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+  color: #d4af37;
+}
+
+.footer-bottom {
+    font-family: var(--ff-secondary);
+    font-weight: 400;
+    font-size: clamp(10px, 0.1rem + 3vw, 14px);
+    text-align: center;
+    margin-top: 2rem;
+    border-top: 1px solid #ffffff22;
+    padding-top: 1rem;
+}
+
